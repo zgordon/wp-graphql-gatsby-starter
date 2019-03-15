@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../../components/layout"
 import PostEntry from "../../components/PostEntry"
+import HeaderArchive from "../../components/HeaderArchive"
 import SEO from "../../components/seo"
 
 const SingleCategory = props => {
@@ -14,11 +15,7 @@ const SingleCategory = props => {
         title={`Category - ${name}`}
         description={`A collection of posts from the ${name} category.`}
       />
-      <header className="page-header">
-        <h1 className="page-title">
-          Category Archives: <span className="page-description">{name}</span>
-        </h1>
-      </header>
+      <HeaderArchive name={name} />
 
       {posts.nodes &&
         posts.nodes.map(post => {
