@@ -4,16 +4,15 @@ import PostEntry from "../../components/PostEntry"
 import HeaderArchive from "../../components/HeaderArchive"
 import SEO from "../../components/seo"
 
-const SingleTag = props => {
+const AuthorArchive = props => {
   const {
     pageContext: { name, posts },
   } = props
-
   return (
-    <Layout className="archive">
+    <Layout classNames="archive">
       <SEO
-        title={`Tag - ${name}`}
-        description={`A collection of posts from the ${name} tag.`}
+        title={`Author - ${name}`}
+        description={`A collection of posts written by ${name}.`}
       />
       <HeaderArchive name={name} />
 
@@ -25,4 +24,4 @@ const SingleTag = props => {
   )
 }
 
-export default SingleTag
+export default AuthorArchive
