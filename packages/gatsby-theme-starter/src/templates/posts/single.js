@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../../components/layout"
 import PostEntryTitle from "../../components/PostEntryTitle"
 
@@ -9,7 +9,7 @@ const SinglePost = props => {
       wpgraphql: { post },
     },
   } = props
-  const { id, postId, title, content } = post
+  const { id, postId, content } = post
 
   return (
     <Layout>
