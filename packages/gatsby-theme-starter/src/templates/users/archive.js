@@ -1,8 +1,8 @@
 import React from "react"
-import Layout from "../../components/layout"
+import Layout from "../../components/Layout"
 import PostEntry from "../../components/PostEntry"
 import HeaderArchive from "../../components/HeaderArchive"
-import SEO from "../../components/seo"
+import Seo from "../../components/Seo"
 
 const AuthorArchive = props => {
   const {
@@ -10,7 +10,7 @@ const AuthorArchive = props => {
   } = props
   return (
     <Layout classNames="archive">
-      <SEO
+      <Seo
         title={`Author - ${name}`}
         description={`A collection of posts written by ${name}.`}
       />
