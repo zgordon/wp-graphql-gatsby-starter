@@ -1,6 +1,6 @@
 import React from "react"
-import Layout from "../../components/layout"
-import SEO from "../../components/seo"
+import Layout from "../../components/Layout"
+import Seo from "../../components/Seo"
 
 const SinglePage = props => {
   const {
@@ -13,7 +13,7 @@ const SinglePage = props => {
 
   return (
     <Layout>
-      <SEO title={title} description={excerpt} />
+      <Seo title={title} description={excerpt} />
       <article
         data-id={id}
         id={`post-${postId}`}
