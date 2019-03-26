@@ -67,36 +67,40 @@ const MENU_QUERY = graphql`
     }
   }
 `
+const renderLink = menuItem =>
+  menuItem.connectedObject.__typename === "WPGraphQL_MenuItem" ? (
+    <a href={menuItem.url} target="_blank" rel="noopener noreferrer">
+      {menuItem.label}
+    </a>
+  ) : createLocalLink(menuItem.url) ? (
+    <Link to={createLocalLink(menuItem.url)}>{menuItem.label}</Link>
+  ) : (
+    menuItem.label
+  )
 
 const renderMenuItem = menuItem => {
-  const link = createLocalLink(menuItem.url)
   if (menuItem.childItems && menuItem.childItems.nodes.length) {
     return renderSubMenu(menuItem)
   } else {
     return (
       <li className="menu-item" key={menuItem.id}>
-        {link ? (
-          <Link to={createLocalLink(menuItem.url)}>{menuItem.label}</Link>
-        ) : (
-          menuItem.label
-        )}
+        {renderLink(menuItem)}
       </li>
     )
   }
 }
 
-const renderSubMenu = menuItem => (
-  <li className="has-subMenu menu-item" key={menuItem.id}>
-    {createLocalLink(menuItem.url) ? (
-      <Link to={createLocalLink(menuItem.url)}>{menuItem.label}</Link>
-    ) : (
-      menuItem.label
-    )}
-    <ul className="menuItemGroup">
-      {menuItem.childItems.nodes.map(item => renderMenuItem(item))}
-    </ul>
-  </li>
-)
+const renderSubMenu = menuItem => {
+  return (
+    <li className="has-subMenu menu-item" key={menuItem.id}>
+      {renderLink(menuItem)}
+
+      <ul className="menuItemGroup sub-menu">
+        {menuItem.childItems.nodes.map(item => renderMenuItem(item))}
+      </ul>
+    </li>
+  )
+}
 
 const Menu = ({ location }) => (
   <StaticQuery
